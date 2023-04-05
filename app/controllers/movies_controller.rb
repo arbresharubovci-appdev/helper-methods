@@ -1,8 +1,6 @@
 class MoviesController < ApplicationController
   def new
     @the_movie = Movie.new
-
-    render template: "movies/new.html.erb"
   end
 
   def index
@@ -27,8 +25,6 @@ class MoviesController < ApplicationController
     matching_movies = Movie.where({ :id => the_id })
 
     @the_movie = matching_movies.first
-
-    render template: "movies/show.html.erb"
   end
 
   def create
@@ -38,9 +34,9 @@ class MoviesController < ApplicationController
 
     if @the_movie.valid?
       @the_movie.save
-      redirect_to(movie_url, { :notice => "Movie created successfully." })
+      redirect_to(movies_url, { :notice => "Movie created successfully." })
     else
-      render template: "movies/new.html.erb"
+      render template: "new"
     end
   end
 
@@ -51,7 +47,6 @@ class MoviesController < ApplicationController
 
     @the_movie = matching_movies.first
 
-    render template: "movies/edit.html.erb"
   end
 
   def update
