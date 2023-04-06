@@ -13,9 +13,7 @@ class MoviesController < ApplicationController
         render json: @list_of_movies
       end
 
-      format.html do
-        render template: "movies/index.html.erb"
-      end
+      format.html
     end
   end
 
@@ -36,7 +34,7 @@ class MoviesController < ApplicationController
       @the_movie.save
       redirect_to(movies_url, { :notice => "Movie created successfully." })
     else
-      render template: "new"
+      render "new"
     end
   end
 
