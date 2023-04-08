@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
 
   def show
     #@the_movie = Movie.where(id: params.fetch(:id)).first
-    @the_movie = Movie.find(params.fetch(:id))
+    @movie = Movie.find(params.fetch(:id))
   end
 
   def create
@@ -49,17 +49,17 @@ class MoviesController < ApplicationController
 
     if @movie.valid?
        @movie.save
-      redirect_to movie_url(@movie),  :notice => "Movie updated successfully."
+      redirect_to movie_url(@movie),  notice: "Movie updated successfully."
     else
-      redirect_to movie_url(@movie),  :alert => "Movie failed to update successfully." 
+      redirect_to movie_url(@movie),  alert: "Movie failed to update successfully." 
     end
   end
 
   def destroy
-    @the_movie =  Movie.find(params.fetch(:id))
+    @movie =  Movie.find(params.fetch(:id))
 
     @movie.destroy
 
-    redirect_to movies_url,  :notice => "Movie deleted successfully."
+    redirect_to movies_url,  notice: "Movie deleted successfully."
   end
 end

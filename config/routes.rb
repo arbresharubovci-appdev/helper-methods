@@ -4,25 +4,28 @@ Rails.application.routes.draw do
   #get "/" => "movie#index"
   #or
 
-  root "movies#index"
+  resources :movies
 
-  # Routes for the Movie resource:
+  resources :directors
 
-  # CREATE
-  post "/movies" => "movies#create" , as: :movies #movies_url and movies_path
-  get "/movies/new" => "movies#new" , as: :new_movie #new_movie_url and new_movie_path
   
-  # READ
-  get "/movies" => "movies#index" 
-  get "/movies/:id" => "movies#show" , as: :movie #movie_path() (expects an arguments to populate :id segment)
+  # root "movies#index"
+
+  # # Routes for the Movie resource:
+
+  # # CREATE
+  # post "/movies" => "movies#create" , as: :movies #movies_url and movies_path
+  # get "/movies/new" => "movies#new" , as: :new_movie #new_movie_url and new_movie_path
+  
+  # # READ
+  # get "/movies" => "movies#index" 
+  # get "/movies/:id" => "movies#show" , as: :movie #movie_path() (expects an arguments to populate :id segment)
  
-  # UPDATE
-  patch "/movies/:id" => "movies#update"
-  get "/movies/:id/edit" => "movies#edit" , as: :edit_movie #edit_movie_path()(expects an arguments to populate :id segment)
+  # # UPDATE
+  # patch "/movies/:id" => "movies#update"
+  # get "/movies/:id/edit" => "movies#edit" , as: :edit_movie #edit_movie_path()(expects an arguments to populate :id segment)
   
-  # DELETE
-  delete "/movies/:id" => "movies#destroy"
-
-
+  # # DELETE
+  # delete "/movies/:id" => "movies#destroy"
   #------------------------------
 end
